@@ -5,6 +5,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #ccffff
 }
 
 button{
@@ -58,7 +59,7 @@ button{
     height: auto;
     border: solid 1px black;
     border-radius: 20px;
-    box-shadow: grey 2px 2px 3px;
+    box-shadow: grey -2px 2px 3px;
 }
 
 .oneButton:hover{
