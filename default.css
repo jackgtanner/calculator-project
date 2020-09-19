@@ -1,0 +1,73 @@
+
+
+body{
+    font-family: 'Orbitron', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button{
+    font-family: 'Orbitron', sans-serif;
+    font-size: x-large;
+}
+
+
+.calcContainer{
+
+    margin-top: 5%;
+    width: 20em;
+    height: 30em;
+    background-image: linear-gradient(to bottom, #ccffff, #ffcccc);
+    border: solid 3px black;
+    border-radius: 20px;
+    box-shadow: grey 3px 3px 3px;
+    padding: 1em;
+}
+
+.screen{
+    width: auto;
+    height: 15%;
+    border: solid 2px black;
+    border-radius: 20px;
+    font-size: 250%;
+    font-weight: bolder;
+    padding: 5px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    box-shadow: grey 3px 3px 3px;
+}
+
+
+.buttonGrid{
+    margin-top: 5%;
+    width: auto;
+    height: 75%;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto auto auto auto auto;
+
+}
+
+.oneButton {
+    background-color: transparent;
+    margin: 2px;
+    width: auto;
+    height: auto;
+    border: solid 1px black;
+    border-radius: 20px;
+    box-shadow: grey 2px 2px 3px;
+}
+
+.oneButton:hover{
+    box-shadow: none;
+}
+
+
+
+#clrButton {
+    grid-row: 4/6;
+    grid-column: 4/5;
+}
