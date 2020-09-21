@@ -41,14 +41,6 @@ button{
     box-shadow: grey 3px 3px 3px;
 }
 
-
-.miniScreen{
-    width: 100px;
-    height: 100px;
-    background-color: black;
-}
-
-
 .buttonGrid{
     margin-top: 5%;
     width: auto;
