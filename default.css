@@ -5,7 +5,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ccffff
+    background-color: #ccffff;
 }
 
 button{
@@ -26,6 +26,7 @@ button{
     padding: 1em;
 }
 
+
 .screen{
     width: auto;
     height: 15%;
@@ -38,6 +39,13 @@ button{
     justify-content: flex-end;
     align-items: center;
     box-shadow: grey 3px 3px 3px;
+}
+
+
+.miniScreen{
+    width: 100px;
+    height: 100px;
+    background-color: black;
 }
 
 
