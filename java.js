@@ -20,24 +20,15 @@ buttons.forEach((button) => {
 })
 
 function userChoice(button) {
-
-
     if (button === "clrButton") return reset();
-
-    else if (wasCleared) {
+    else if (wasCleared === true) {
         screenDisplay.innerHTML = "";
         wasCleared = false;
     }
-    else if (button === "=") return equals(total);
-    else if (button === "+") return add(total, num1);
-    else if (button === "^2") return square(total, num1);
-
-
-
-
-
-
-
+    else if (button === "=") return equals();
+    else if (button === "+") return add();
+    else if (button === "^2") return square();
+    else if (button === "√") return root();
 
     if (screenDisplay.innerHTML > 99999999) {
         wasCleared = true;
@@ -46,20 +37,6 @@ function userChoice(button) {
 
     screenDisplay.innerHTML += button;
     console.log(screenDisplay.innerHTML)
-
-}
-
-function equals() {
-    return screenTotal();
-}
-
-
-
-function add() {
-    wasCleared = true;
-    num1 = parseInt(screenDisplay.innerHTML);
-    total = total + num1;
-    return screenTotal();
 }
 
 //a quick function to display the total variable in the screen
@@ -70,6 +47,7 @@ function screenTotal() {
     }
     return screenDisplay.innerHTML = total;
 }
+
 
 //resets the variables, consoles and html's back to when the page was first loaded in
 function reset() {
@@ -82,27 +60,41 @@ function reset() {
 }
 
 
-function square () {
+
+
+function equals() {
+    console.log({total});
+    return screenTotal();
+}
+
+
+function add() {
+    wasCleared = true;
+    num1 = parseInt(screenDisplay.innerHTML);
+    total = total + num1;
+    return screenTotal();
+}
+
+
+function square() {
     num1 = parseInt(screenDisplay.innerHTML);
     total = num1 * num1;
     return screenTotal();
 }
 
 
-
-
+function root() {
+    num1 = parseInt(screenDisplay.innerHTML);
+    if (Number.isInteger(Math.sqrt(num1)) != true) total = Math.sqrt(num1).toFixed(8);
+    else total = Math.sqrt(num1);
+    return screenTotal();
+}
 
 function subtract(x, y) {
-    return z = x - y;
 }
 
 function multiply(array) {
-    return array.length
-        ? array.reduce((accumulator, nextItem) => accumulator * nextItem)
-        : 0;
-
 }
 
 function divide(x, y) {
-    return z = x / y;
 }
