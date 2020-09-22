@@ -10,12 +10,89 @@ const screenDisplay = document.querySelector('.screen');
 screenDisplay.innerHTML = "0";
 
 
+
 buttons.forEach((button) => {
 
     button.addEventListener('click', () => {
         userChoice(button.id);
     });
 })
+
+
+window.addEventListener("keydown", (e) => {
+    const key = document.querySelector(`button[value='${e.key}']`);
+    console.log(e.key);
+
+
+    switch (e.key) {
+        case "Shift":
+            return;
+        case "Backspace":
+            userChoice("clrButton");
+            break;
+        case "Escape":
+            userChoice("clrButton");
+            break;
+
+        case "0":
+            userChoice("0");
+            break;
+        case "1":
+            userChoice("1");
+            break;
+        case "2":
+            userChoice("2");
+            break;
+        case "3":
+            userChoice("3");
+            break;
+        case "4":
+            userChoice("4");
+            break;
+        case "5":
+            userChoice("5");
+            break;
+        case "6":
+            userChoice("6");
+            break;
+        case "7":
+            userChoice("7");
+            break;
+        case "8":
+            userChoice("8");
+            break;
+        case "9":
+            userChoice("9");
+            break;
+        case "=":
+            userChoice("=");
+            break;
+        case "+":
+            userChoice("+");
+            break;
+        case "-":
+            userChoice("-");
+            break;
+        case "%":
+            userChoice("%");
+            break;
+        case "/":
+            userChoice("%");
+            break;
+        case "^":
+            userChoice("^2");
+            break;
+        case "*":
+            userChoice("*");
+            break;
+        case "√":
+            userChoice("√");
+            break;
+    }
+});
+
+
+
 
 
 function userChoice(button) {
@@ -29,12 +106,12 @@ function userChoice(button) {
     }
 
     else if (button == "%" || button == "*" || button == "+" || button == "-" || button == "^2" || button == "√" || button == "=") {
-        console.log("a")
         if (operand == "") {
+            if (button === "=") return;
             console.log("b")
             num1 = parseFloat(screenDisplay.innerHTML);
             operand = button;
-            console.log({ num1 }, { operand });
+            console.log({ num1 }, { num2 }, { operand }, { operand2 })
             wasCleared = true
             if (operand === "^2") return square();
             else if (operand === "√") return root();
@@ -42,10 +119,9 @@ function userChoice(button) {
         }
         else {
             operand2 = button;
-            console.log({ operand }, { operand2 })
-            console.log("c")
             num2 = parseFloat(screenDisplay.innerHTML);
-            if (button === "=") return equals();
+            console.log({ num1 }, { num2 }, { operand }, { operand2 })
+            if (operand2 === "=") return equals();
             else if (operand === "+") return add();
             else if (operand === "-") return subtract()
             else if (operand === "^2") return square();
@@ -75,6 +151,7 @@ function screenTotal() {
         wasCleared = true;
         return screenDisplay.innerHTML = "too large"
     }
+
     return screenDisplay.innerHTML = total;
 }
 
@@ -88,7 +165,6 @@ function reset() {
     num2 = 0;
     operand = operand2;
     operand2 = "";
-    console.log({ operand }, { operand2 });
     wasCleared = true;
     console.clear();
     return
@@ -98,13 +174,37 @@ function reset() {
 
 
 function equals() {
+    console.log({ num1 }, { num2 }, { operand }, { operand2 })
+
     operand2 = "";
-    if (operand === "+") return add();
-    else if (operand === "-") return subtract()
-    else if (operand === "^2") return square();
-    else if (operand === "√") return root();
-    else if (operand === "%") return divide();
-    else if (operand === "*") return multiply();
+
+    console.log({ num1 }, { num2 }, { operand }, { operand2 })
+
+    if (operand === "+") {
+        operand = "";
+        return add();
+    }
+    else if (operand === "-") {
+        operand = ""
+        return subtract()
+    }
+
+    else if (operand === "^2") {
+        operand = ""
+        return square();
+    }
+    else if (operand === "√") {
+        operand = ""
+        return root();
+    }
+    else if (operand === "%") {
+        operand = ""
+        return divide();
+    }
+    else if (operand === "*") {
+        operand = ""
+        return multiply();
+    }
 }
 
 
@@ -121,7 +221,8 @@ function add() {
 
 function square() {
     wasCleared = true;
-    total = Math.pow(num1, 2);
+    if (Number.isInteger(Math.pow(num1, 2)) != true) total = Math.pow(num1, 2).toFixed(2);
+    else total = Math.pow(num1, 2);
     num1 = total;
     num2 = 0;
     operand = operand2;
@@ -135,8 +236,8 @@ function root() {
     num2 = 0;
     operand = operand2;
     operand2 = "";
-    num1 = parseInt(screenDisplay.innerHTML);
-    if (Number.isInteger(Math.sqrt(num1)) != true) total = Math.sqrt(num1).toFixed(8);
+    num1 = parseFloat(screenDisplay.innerHTML);
+    if (Number.isInteger(Math.sqrt(num1)) != true) total = Math.sqrt(num1).toFixed(2);
     else total = Math.sqrt(num1);
     return screenTotal(total);
 }
@@ -156,7 +257,7 @@ function multiply() {
     total = num1 * num2;
     num1 = total;
     num2 = 0;
-    operand = ""
+    operand2 = ""
     return screenTotal(total);
 }
 
@@ -165,12 +266,12 @@ function divide() {
     if (num2 === 0) {
         num1 = total;
         num2 = 0;
-        operand = ""
-       return screenDisplay.innerHTML = "nice try";
+        operand2 = ""
+        return screenDisplay.innerHTML = "Nice Try";
     }
     total = num1 / num2;
     num1 = total;
     num2 = 0;
-    operand = ""
+    operand2 = ""
     return screenTotal(total);
 }

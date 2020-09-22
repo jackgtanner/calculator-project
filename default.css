@@ -13,6 +13,10 @@ button{
     font-size: x-large;
 }
 
+button:focus {
+    outline: none;
+}
+
 
 .calcContainer{
 
@@ -39,6 +43,7 @@ button{
     justify-content: flex-end;
     align-items: center;
     box-shadow: grey 3px 3px 3px;
+    overflow: hidden;
 }
 
 .buttonGrid{
